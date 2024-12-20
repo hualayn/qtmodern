@@ -1,11 +1,12 @@
-from qtpy.QtGui import QPalette, QColor
+from PySide6.QtWidgets import QApplication
+from PySide6.QtGui import QPalette, QColor
 from ._utils import QT_VERSION, resource_path
 
 _STYLESHEET = resource_path('resources/style.qss')
 """ str: Main stylesheet. """
 
 
-def _apply_base_theme(app):
+def _apply_base_theme(app: QApplication):
     """ Apply base theme to the application.
 
         Args:
@@ -49,6 +50,7 @@ def dark(app):
     darkPalette.setColor(QPalette.ToolTipBase, QColor(53, 53, 53))
     darkPalette.setColor(QPalette.ToolTipText, QColor(180, 180, 180))
     darkPalette.setColor(QPalette.LinkVisited, QColor(80, 80, 80))
+    darkPalette.setColor(QPalette.PlaceholderText, QColor(90, 90, 90))
 
     # disabled
     darkPalette.setColor(QPalette.Disabled, QPalette.WindowText,

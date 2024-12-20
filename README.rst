@@ -1,6 +1,6 @@
-========
-qtmodern
-========
+====================
+qtmodern for PySide6
+====================
 
 .. image:: https://travis-ci.org/gmarull/qtmodern.svg?branch=master
     :target: https://travis-ci.org/gmarull/qtmodern

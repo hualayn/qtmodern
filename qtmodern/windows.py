@@ -1,5 +1,5 @@
-from qtpy.QtCore import Qt, QMetaObject, Signal, Slot, QPoint
-from qtpy.QtWidgets import (QWidget, QVBoxLayout, QHBoxLayout, QToolButton,
+from PySide6.QtCore import Qt, QMetaObject, Signal, Slot, QPoint
+from PySide6.QtWidgets import (QWidget, QVBoxLayout, QHBoxLayout, QToolButton,
                             QLabel, QSizePolicy)
 from ._utils import QT_VERSION, PLATFORM, resource_path
 

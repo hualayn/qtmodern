@@ -1,9 +1,9 @@
 import sys
 from os.path import join, dirname, abspath
-import qtpy
+import PySide6
 import platform
 
-QT_VERSION = tuple(int(v) for v in qtpy.QT_VERSION.split('.'))
+QT_VERSION = tuple(int(v) for v in PySide6.__version__.split('.'))
 """ tuple: Qt version. """
 
 PLATFORM = platform.system()
