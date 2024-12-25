@@ -1,50 +1,45 @@
 ====================
-qtmodern for PySide6
+qtmodern6
 ====================
 
-.. image:: https://travis-ci.org/gmarull/qtmodern.svg?branch=master
-    :target: https://travis-ci.org/gmarull/qtmodern
-    :alt: Travis build
-
-.. image:: https://img.shields.io/pypi/v/qtmodern.svg
-    :target: https://pypi.python.org/pypi/qtmodern
+.. image:: https://img.shields.io/pypi/v/qtmodern6.svg
+    :target: https://pypi.python.org/pypi/qtmodern6
     :alt: PyPI Version
 
-``qtmodern`` is a Python package aimed to make PyQt/PySide applications look
-better and consistent on multiple platforms. It provides a custom frameless
-window and a dark theme. In order to be compatible with multiple Python Qt
-wrappers `QtPy <https://github.com/spyder-ide/qtpy>`_ is used. The initial idea
-comes from `this project <https://github.com/Jorgen-VikingGod/Qt-Frameless-Window-DarkStyle>`_.
+``qtmodern6`` 是在``gmarull/qtmodern``项目基础上修改而来的。  
+查看原项目请点击：<https://github.com/gmarull/qtmodern>  
+
+原项目只能支持``PyQt``、``PySide2``，且已经停止维护。git上也没能找到类似的项目。
+因此就考虑修改原项目以适配``PySide6``。  
+
+
+主题界面如下图（可能稍有不同）：  
 
 .. image:: examples/mainwindow.png
     :width: 450px
     :align: center
     :alt: Example
 
-Installation
-------------
+基本用法和原来一样。   
 
-The recommended way to install is by using ``pip``, i.e::
-
-    pip install qtmodern
-
-Usage
+安装（python版本>=3.9）：
 -----
 
-In order to use ``qtmodern``, simply apply the style you want to your
-application and then, create a ``ModernWindow`` enclosing the window you want to
-*modernize*::
+    pip install qtmodern6
 
-    import qtmodern.styles
-    import qtmodern.windows
+如何使用：
+--------
+
+    import qtmodern6.styles
+    import qtmodern6.windows
 
     ...
 
     app = QApplication()
     win = YourWindow()
 
-    qtmodern.styles.dark(app)
-    mw = qtmodern.windows.ModernWindow(win)
+    qtmodern6.styles.dark(app)
+    mw = qtmodern6.windows.ModernWindow(win)
     mw.show()
 
     ...

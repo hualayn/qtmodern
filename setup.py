@@ -1,18 +1,18 @@
 #!/usr/bin/env python
 
-import qtmodern
+import qtmodern6
 from setuptools import setup
 
-_version = qtmodern.__version__
+_version = qtmodern6.__version__
 
-setup(name='qtmodern',
+setup(name='qtmodern6',
       version=_version,
-      packages=['qtmodern'],
-      description='Qt Widgets Modern User Interface',
+      packages=['qtmodern6'],
+      description='PySide6 Widgets Modern User Interface',
       long_description=open('README.rst').read(),
-      author='Gerard Marull-Paretas',
-      author_email='gerardmarull@gmail.com',
-      url='https://www.github.com/gmarull/qtmodern',
+      author='hua Layn',
+      author_email='layn@jinkuni.com',
+      url='https://www.github.com/hualayn/qtmodern6',
       license='MIT',
       classifiers=[
           'Development Status :: 3 - Alpha',
@@ -23,6 +23,6 @@ setup(name='qtmodern',
           'Topic :: Software Development :: User Interfaces'
       ],
       package_data={
-          'qtmodern': ['resources/*']
+          'qtmodern6': ['resources/*']
       },
-      install_requires=['qtpy>=1.3.1'])
+      install_requires=['PySide6>=6.0.0'])

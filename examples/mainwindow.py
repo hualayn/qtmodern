@@ -1,17 +1,14 @@
 import sys
 from time import sleep
-from os.path import join, dirname, abspath, basename, isdir
+from os.path import dirname, abspath, basename, isdir
 from os import listdir
 
-from qtpy import uic
-from qtpy.QtCore import Slot, QThread, Signal
-from qtpy.QtWidgets import QApplication, QMainWindow, QMessageBox, QTreeWidgetItem
+from PySide6.QtCore import Slot, QThread, Signal
+from PySide6.QtWidgets import QMainWindow, QApplication, QMessageBox, QTreeWidgetItem
+from mainwindow_ui import Ui_MainWindow
 
-import qtmodern.styles
-import qtmodern.windows
-
-
-_UI = join(dirname(abspath(__file__)), 'mainwindow.ui')
+import qtmodern6.styles
+import qtmodern6.windows
 
 
 class ProgressThread(QThread):
@@ -28,11 +25,10 @@ class ProgressThread(QThread):
             sleep(0.5)
 
 
-class MainWindow(QMainWindow):
+class MainWindow(Ui_MainWindow, QMainWindow):
     def __init__(self):
         QMainWindow.__init__(self)
-
-        uic.loadUi(_UI, self)  # Load the ui into self
+        self.setupUi(self)
 
         self.tooltiplabel.setToolTip("This is a tool tip that shows a tip about the tool")
 
@@ -59,10 +55,10 @@ class MainWindow(QMainWindow):
         self.progressBar.setValue(progress)
 
     def lightTheme(self):
-        qtmodern.styles.light(QApplication.instance())
+        qtmodern6.styles.light(QApplication.instance())
 
     def darkTheme(self):
-        qtmodern.styles.dark(QApplication.instance())
+        qtmodern6.styles.dark(QApplication.instance())
 
     @Slot()
     def on_pushButton_clicked(self):
@@ -80,8 +76,8 @@ class MainWindow(QMainWindow):
 if __name__ == '__main__':
     app = QApplication(sys.argv)
 
-    qtmodern.styles.dark(app)
-    mw = qtmodern.windows.ModernWindow(MainWindow())
+    qtmodern6.styles.dark(app)
+    mw = qtmodern6.windows.ModernWindow(MainWindow())
     mw.show()
 
     sys.exit(app.exec_())
