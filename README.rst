@@ -9,7 +9,7 @@ qtmodern6
 ``qtmodern6`` 是在``gmarull/qtmodern``项目基础上修改而来的。  
 查看原项目请点击：<https://github.com/gmarull/qtmodern>  
 
-原项目只能支持``PyQt``、``PySide2``，且已经停止维护。git上也没能找到类似的项目。
+原项目只能支持``PyQt``、``PySide2``, 且已经停止维护。git上也没能找到类似的项目。
 因此就考虑修改原项目以适配``PySide6``。  
 
 
@@ -22,7 +22,7 @@ qtmodern6
 
 基本用法和原来一样。   
 
-安装（python版本>=3.9）：
+安装(python版本>=3.9):
 -----
 
     pip install qtmodern6
