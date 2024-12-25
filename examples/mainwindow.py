@@ -3,8 +3,9 @@ from time import sleep
 from os.path import dirname, abspath, basename, isdir
 from os import listdir
 
-from PySide6.QtCore import Slot, QThread, Signal
+from PySide6.QtCore import Slot, QThread, Signal, QFile
 from PySide6.QtWidgets import QMainWindow, QApplication, QMessageBox, QTreeWidgetItem
+from PySide6.QtUiTools import QUiLoader
 from mainwindow_ui import Ui_MainWindow
 
 import qtmodern6.styles
@@ -25,10 +26,17 @@ class ProgressThread(QThread):
             sleep(0.5)
 
 
-class MainWindow(Ui_MainWindow, QMainWindow):
+class MainWindow(QMainWindow):
+
+    ui_path = 'mainwindow.ui'
+
     def __init__(self):
         QMainWindow.__init__(self)
-        self.setupUi(self)
+        # self.setupUi(self)
+        ui_file = QFile(self.ui_path)
+        ui_file.open(QFile.ReadOnly)
+        loader = QUiLoader(ui_file)
+        loader.load(ui_file, self)
 
         self.tooltiplabel.setToolTip("This is a tool tip that shows a tip about the tool")
 
