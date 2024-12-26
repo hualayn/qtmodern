@@ -3,9 +3,8 @@ from time import sleep
 from os.path import dirname, abspath, basename, isdir
 from os import listdir
 
-from PySide6.QtCore import Slot, QThread, Signal, QFile
+from PySide6.QtCore import Slot, QThread, Signal
 from PySide6.QtWidgets import QMainWindow, QApplication, QMessageBox, QTreeWidgetItem
-from PySide6.QtUiTools import QUiLoader
 from mainwindow_ui import Ui_MainWindow
 
 import qtmodern6.styles
@@ -31,26 +30,23 @@ class MainWindow(QMainWindow):
     ui_path = 'mainwindow.ui'
 
     def __init__(self):
-        QMainWindow.__init__(self)
-        # self.setupUi(self)
-        ui_file = QFile(self.ui_path)
-        ui_file.open(QFile.ReadOnly)
-        loader = QUiLoader(ui_file)
-        loader.load(ui_file, self)
+        super(MainWindow, self).__init__()
+        self.ui = Ui_MainWindow()
+        self.ui.setupUi(self)        
 
-        self.tooltiplabel.setToolTip("This is a tool tip that shows a tip about the tool")
+        self.ui.tooltiplabel.setToolTip("This is a tool tip that shows a tip about the tool")
 
-        self.actionLight.triggered.connect(self.lightTheme)
-        self.actionDark.triggered.connect(self.darkTheme)
+        self.ui.actionLight.triggered.connect(self.lightTheme)
+        self.ui.actionDark.triggered.connect(self.darkTheme)
 
         self.thread = ProgressThread()
         self.thread.update.connect(self.update_progress)
         self.thread.start()
 
-        self.load_project_structure(dirname(dirname(abspath(__file__))), self.treeWidget)
+        self.load_project_structure(dirname(dirname(abspath(__file__))), self.ui.treeWidget)
 
         for i in range(100):
-            self.comboBox_2.addItem("item {}".format(i))
+            self.ui.comboBox_2.addItem("item {}".format(i))
 
     def load_project_structure(self, startpath, tree):
         for element in listdir(startpath):
@@ -60,7 +56,7 @@ class MainWindow(QMainWindow):
                 self.load_project_structure(path_info, parent_itm)
 
     def update_progress(self, progress):
-        self.progressBar.setValue(progress)
+        self.ui.progressBar.setValue(progress)
 
     def lightTheme(self):
         qtmodern6.styles.light(QApplication.instance())
